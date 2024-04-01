@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
-  const CustomTextField({Key? key}) : super(key: key);
+  const CustomTextField({Key? key, required this.label}) : super(key: key);
+
+  final String label;
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding:  EdgeInsets.all(8.0),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
       child: TextField(
         decoration: InputDecoration(
-          border: OutlineInputBorder(),
-          labelText: 'Enter your username',
+          border: const OutlineInputBorder(),
+          labelText: label,
         ),
       ),
     );

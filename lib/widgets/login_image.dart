@@ -13,8 +13,8 @@ class LoginImage extends StatelessWidget {
             alignment: Alignment.topCenter,
             child: Image.asset(
               'assets/images/login_image.png',
-              width: 100,
-              height: 100,
+              width: 250,
+              height: 250,
             ),
           ),
         ),
