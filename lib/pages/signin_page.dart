@@ -1,12 +1,29 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:attendance_tracker/widgets/text_field.dart';
 import 'package:attendance_tracker/widgets/long_button.dart';
-import 'package:attendance_tracker/widgets/login_image.dart';
+import 'package:attendance_tracker/services/firebase_auth.dart'; // Import FirebaseAuthService
 
-class SigninPage extends StatelessWidget {
+class SigninPage extends StatefulWidget {
   const SigninPage({Key? key}) : super(key: key);
 
   @override
+  State<SigninPage> createState() => _SigninPageState();
+}
+
+class _SigninPageState extends State<SigninPage> {
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    usernameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
@@ -60,74 +77,71 @@ class SigninPage extends StatelessWidget {
                 ),
               ),
             ),
-            const Align(
+            Align(
               alignment: Alignment.centerLeft,
               child: Padding(
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                   top: 250,
                   left: 30,
                 ),
                 child: CustomTextField(
+                  controller: emailController, // Provide emailController
                   width: 320,
                   height: 50,
                   borderRadius: 30,
-                  text: 'Username',
+                  text: 'Email',
                   iconData: IconData(0xee35, fontFamily: 'MaterialIcons'),
+                  onChanged: (value) {
+                    // Update email value when user types
+                    setState(() {
+                      // Update the state
+                    });
+                  // ignore: unused_label
+                  }, obscureText: false, // Set obscureText to false for email field
                 ),
               ),
             ),
-            const Align(
+            Align(
               alignment: Alignment.centerLeft,
               child: Padding(
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                   top: 380,
                   left: 30,
                 ),
                 child: CustomTextField(
+                  controller: passwordController, // Provide passwordController
                   width: 320,
                   height: 50,
                   borderRadius: 30,
                   text: 'Password',
                   iconData: IconData(0xf0050, fontFamily: 'MaterialIcons'),
+                  onChanged: (value) {
+                    // Update password value when user types
+                    setState(() {
+                      // Update the state
+                    });
+                  },
+                  obscureText: true, // Set obscureText to true for password field
                 ),
               ),
             ),
-            const Align(
+            Align(
               alignment: Alignment.centerLeft,
               child: Padding(
-                padding: EdgeInsets.only(
-                  top: 460.0,
-                  left: 50.0,
-                ),
-                child: Row(
-                  children: [
-                    Text(
-                      'Remember me next time',
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.deepPurpleAccent,
-                        fontFamily: 'sans-serif',
-                      ),
-                    ),
-                    SizedBox(width: 8),
-                    Icon(
-                      Icons.check_box_outline_blank,
-                      size: 20,
-                      color: Colors.deepPurpleAccent,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            const Align(
-              alignment: Alignment.centerLeft,
-              child: Padding(
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                   top: 540.0,
                   left: 30.0,
                 ),
                 child: LongButton(
+                  onPressed: () async {
+                    // Call sign in method when button is pressed
+                    User? user = await FirebaseAuthService().signInWithEmailAndPassword(emailController.text, passwordController.text);
+                    if (user != null) {
+                      // Navigate to home screen or perform necessary action upon successful login
+                    } else {
+                      // Show error message or handle unsuccessful login
+                    }
+                  },
                   width: 320,
                   height: 50,
                   text: 'Sign In',
@@ -157,6 +171,9 @@ class SigninPage extends StatelessWidget {
                     ),
                     const SizedBox(width: 8),
                     GestureDetector(
+                      onTap: () {
+                        // Redirect to sign up page action here
+                      },
                       child: const Text(
                         'Redirect to Parent Page',
                         style: TextStyle(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:attendance_tracker/pages/welcome_page.dart';
+//import 'package:attendance_tracker/pages/welcome_page.dart';
 import 'package:attendance_tracker/pages/signin_page.dart';
-import 'package:attendance_tracker/widgets/text_field.dart';
+//import 'package:attendance_tracker/widgets/text_field.dart';
 
 void main() {
   runApp(const MyApp());

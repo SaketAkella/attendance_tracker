@@ -5,7 +5,10 @@ class CustomTextField extends StatelessWidget {
   final double height;
   final double borderRadius;
   final String text;
-  final IconData iconData; // Add iconData property
+  final IconData iconData;
+  final ValueChanged<String> onChanged; // Add onChanged parameter
+  final TextEditingController controller; // Add controller parameter
+  final bool obscureText; // Add obscureText parameter
 
   const CustomTextField({
     Key? key,
@@ -13,7 +16,10 @@ class CustomTextField extends StatelessWidget {
     required this.height,
     this.borderRadius = 0.0,
     required this.text,
-    required this.iconData, // Define iconData parameter
+    required this.iconData,
+    required this.onChanged, // Update constructor with parameters
+    required this.controller,
+    required this.obscureText,
   }) : super(key: key);
 
   @override
@@ -29,7 +35,7 @@ class CustomTextField extends StatelessWidget {
             color: Colors.grey.withOpacity(0.5),
             spreadRadius: 1,
             blurRadius: 7,
-            offset: const Offset(0, 3), 
+            offset: const Offset(0, 3),
           )
         ]
       ),
@@ -42,12 +48,20 @@ class CustomTextField extends StatelessWidget {
               color: Colors.deepPurpleAccent,
             ),
             const SizedBox(width: 8), // Add spacing between icon and text
-            Text(
-              text,
-              style: const TextStyle(
-                fontSize: 12,
-                fontFamily: 'san-serif',
-                color: Colors.deepPurple,
+            Expanded(
+              child: TextField(
+                onChanged: onChanged,
+                controller: controller,
+                obscureText: obscureText,
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintText: text,
+                  hintStyle: const TextStyle(
+                    fontSize: 12,
+                    fontFamily: 'san-serif',
+                    color: Colors.deepPurple,
+                  ),
+                ),
               ),
             ),
           ],

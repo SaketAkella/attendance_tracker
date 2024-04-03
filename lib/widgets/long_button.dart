@@ -7,6 +7,7 @@ class LongButton extends StatelessWidget {
   final String text;
   final Color color;
   final Color textColor;
+  final VoidCallback onPressed; // Add onPressed callback
 
   const LongButton({
     Key? key,
@@ -16,6 +17,7 @@ class LongButton extends StatelessWidget {
     required this.text,
     required this.color,
     required this.textColor,
+    required this.onPressed, // Update constructor with onPressed parameter
   }) : super(key: key);
 
   @override
@@ -35,15 +37,14 @@ class LongButton extends StatelessWidget {
           ),
         ],
       ),
-      
       child: TextButton(
-        onPressed: null, // Removed onPressed handler
+        onPressed: null, // Use onPressed callback
         child: Text(
           text,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 12,
             fontFamily: 'san-serif',
-            color: Colors.white,
+            color: textColor, // Use textColor for text color
           ),
         ),
       ),
