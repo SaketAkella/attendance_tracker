@@ -110,9 +110,9 @@ class SigninPage extends StatelessWidget {
                         fontFamily: 'sans-serif',
                       ),
                     ),
-                    SizedBox(width: 8), 
+                    SizedBox(width: 8),
                     Icon(
-                      Icons.check_box_outline_blank, 
+                      Icons.check_box_outline_blank,
                       size: 20,
                       color: Colors.deepPurpleAccent,
                     ),
@@ -158,7 +158,7 @@ class SigninPage extends StatelessWidget {
                     const SizedBox(width: 8),
                     GestureDetector(
                       child: const Text(
-                        'Sign Up',
+                        'Redirect to Parent Page',
                         style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
