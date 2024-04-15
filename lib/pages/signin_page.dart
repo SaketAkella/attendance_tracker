@@ -24,6 +24,7 @@ class _SigninPageState extends State<SigninPage> {
     super.dispose();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
@@ -90,14 +91,16 @@ class _SigninPageState extends State<SigninPage> {
                   height: 50,
                   borderRadius: 30,
                   text: 'Email',
-                  iconData: IconData(0xee35, fontFamily: 'MaterialIcons'),
+                  iconData:  const IconData(0xee35, fontFamily: 'MaterialIcons'),
                   onChanged: (value) {
                     // Update email value when user types
                     setState(() {
                       // Update the state
                     });
-                  // ignore: unused_label
-                  }, obscureText: false, // Set obscureText to false for email field
+                    // ignore: unused_label
+                  },
+                  obscureText:
+                      false, // Set obscureText to false for email field
                 ),
               ),
             ),
@@ -114,14 +117,15 @@ class _SigninPageState extends State<SigninPage> {
                   height: 50,
                   borderRadius: 30,
                   text: 'Password',
-                  iconData: IconData(0xf0050, fontFamily: 'MaterialIcons'),
+                  iconData: const IconData(0xf0050, fontFamily: 'MaterialIcons'),
                   onChanged: (value) {
                     // Update password value when user types
                     setState(() {
                       // Update the state
                     });
                   },
-                  obscureText: true, // Set obscureText to true for password field
+                  obscureText:
+                      true, // Set obscureText to true for password field
                 ),
               ),
             ),
@@ -135,7 +139,9 @@ class _SigninPageState extends State<SigninPage> {
                 child: LongButton(
                   onPressed: () async {
                     // Call sign in method when button is pressed
-                    User? user = await FirebaseAuthService().signInWithEmailAndPassword(emailController.text, passwordController.text);
+                    User? user = await FirebaseAuthService()
+                        .signInWithEmailAndPassword(
+                            emailController.text, passwordController.text);
                     if (user != null) {
                       // Navigate to home screen or perform necessary action upon successful login
                     } else {
