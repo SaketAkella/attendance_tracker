@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:attendance_tracker/widgets/text_field.dart';
+import 'package:flutter/widgets.dart';
 
 class ParentsLogin extends StatelessWidget {
   const ParentsLogin({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController textEditingController = TextEditingController(); // Define and initialize the TextEditingController
+
     return Scaffold(
       body: Container(
         color: Colors.white,
@@ -37,9 +41,9 @@ class ParentsLogin extends StatelessWidget {
                     fontFamily: 'sans-serif',
                     shadows: [
                       Shadow(
-                        color: Colors.black,
+                        color: Colors.grey,
                         blurRadius: 2,
-                        offset: Offset(2, 3),
+                        offset: Offset(2, 2),
                       )
                     ]
                   ),
@@ -62,15 +66,35 @@ class ParentsLogin extends StatelessWidget {
                     fontFamily: 'sans-serif',
                     shadows: [
                       Shadow(
-                        color: Colors.black,
-                        blurRadius: 5,
-                        offset: Offset(2, 3),
+                        color: Colors.grey,
+                        blurRadius: 1,
+                        offset: Offset(2, 2),
                       )
                     ]
                   ),
                 ),
               ),
             ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  top:300.0,
+                  left:25.0,
+                ),
+                child: CustomTextField(
+                  width: 320,
+                  height: 50,
+                  text: 'Password',
+                  borderRadius: 30,
+                  iconData: const IconData(0xf0050, fontFamily: 'MaterialIcons'),
+                  obscureText: false,
+                  onChanged: (value){
+                  },
+                  controller: textEditingController, // Pass the TextEditingController to the controller parameter
+                ),
+              ),
+            )
           ],
         ),
       ),
