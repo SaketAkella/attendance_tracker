@@ -32,21 +32,23 @@ class _SigninPageState extends State<LoginPage> {
         child: Stack(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 125.0),
-              child: Align(
-                alignment: Alignment.topCenter,
-                child: Image.asset(
-                  'assets/images/1.jpg',
-                  width: 250,
-                  height: 250,
-                ),
-              ),
-            ), //image
+                padding: const EdgeInsets.only(top: 80.0),
+                child: AspectRatio(
+                  aspectRatio: 11 / 9,
+                  child: Align(
+                    alignment: Alignment.topCenter,
+                    child: Image.asset(
+                      'assets/images/1.jpg',
+                      width: 250,
+                      height: 250,
+                    ),
+                  ),
+                )), //image
             const Align(
               alignment: Alignment.centerLeft,
               child: Padding(
                 padding: EdgeInsets.only(
-                  top: 50.0,
+                  bottom: 90.0,
                   left: 20.0,
                 ),
                 child: Text(
@@ -65,7 +67,7 @@ class _SigninPageState extends State<LoginPage> {
               child: Padding(
                 padding: EdgeInsets.only(
                   left: 30,
-                  top: 140,
+                  top: 10,
                 ),
                 child: Text(
                   'Please Sign In to continue.',
@@ -82,8 +84,8 @@ class _SigninPageState extends State<LoginPage> {
               alignment: Alignment.centerLeft,
               child: Padding(
                 padding: const EdgeInsets.only(
-                  top: 250,
-                  left: 30,
+                  top: 150,
+                  left: 25,
                 ),
                 child: CustomTextField(
                   controller: emailController, // Provide emailController
@@ -91,7 +93,7 @@ class _SigninPageState extends State<LoginPage> {
                   height: 50,
                   borderRadius: 30,
                   text: 'Email',
-                  iconData:  const IconData(0xee35, fontFamily: 'MaterialIcons'),
+                  iconData: const IconData(0xee35, fontFamily: 'MaterialIcons'),
                   onChanged: (value) {
                     // Update email value when user types
                     setState(() {
@@ -108,8 +110,8 @@ class _SigninPageState extends State<LoginPage> {
               alignment: Alignment.centerLeft,
               child: Padding(
                 padding: const EdgeInsets.only(
-                  top: 380,
-                  left: 30,
+                  top: 280,
+                  left: 25,
                 ),
                 child: CustomTextField(
                   controller: passwordController, // Provide passwordController
@@ -117,7 +119,8 @@ class _SigninPageState extends State<LoginPage> {
                   height: 50,
                   borderRadius: 30,
                   text: 'Password',
-                  iconData: const IconData(0xf0050, fontFamily: 'MaterialIcons'),
+                  iconData:
+                      const IconData(0xf0050, fontFamily: 'MaterialIcons'),
                   onChanged: (value) {
                     // Update password value when user types
                     setState(() {
@@ -133,8 +136,8 @@ class _SigninPageState extends State<LoginPage> {
               alignment: Alignment.centerLeft,
               child: Padding(
                 padding: const EdgeInsets.only(
-                  top: 540.0,
-                  left: 30.0,
+                  top: 415.0,
+                  left: 25.0,
                 ),
                 child: LongButton(
                   onPressed: () async {
@@ -161,7 +164,7 @@ class _SigninPageState extends State<LoginPage> {
               alignment: Alignment.centerLeft,
               child: Padding(
                 padding: const EdgeInsets.only(
-                  top: 625.0,
+                  top: 500.0,
                   left: 50.0,
                 ),
                 child: Row(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 //import 'package:attendance_tracker/pages/welcome_page.dart';
 import 'package:attendance_tracker/pages/login_page.dart';
-import 'package:attendance_tracker/pages/signup_page.dart';
+import 'package:attendance_tracker/pages/parents_login.dart';
 //import 'package:attendance_tracker/widgets/text_field.dart';
   
 void main() {
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const SignupPage(),
+      home: const ParentsLogin(),
     );
   }
 }
